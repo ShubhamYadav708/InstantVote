@@ -1,0 +1,119 @@
+.customNav {
+  background-color: #115e59;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 1rem;
+}
+
+.customNav .navbar-brand {
+  text-decoration: none;
+}
+
+.customNav .navbar-brand span {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.customNav .nav-link {
+  display: inline-block;
+  width: fit-content;
+  color: #e6fffa !important;
+  font-weight: 500;
+  margin-right: 0.9rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.customNav .nav-link:hover {
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.customNav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #99f6e4;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.customNav .nav-link:hover::after,
+.customNav .nav-link.active::after {
+  width: 100%;
+}
+
+.customNav .nav-link.active {
+  color: #ffffff !important;
+}
+
+.customNav .btn-outline-primary {
+  border: 1px solid #99f6e4;
+  color: #ffffff;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.customNav .btn-outline-primary:hover {
+  background-color: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+}
+
+.customNav .btn-primary {
+  background-color: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.customNav .btn-primary:hover {
+  background-color: #0d9488;
+  border-color: #0d9488;
+}
+
+.customNav .btn:focus,
+.customNav .btn:active,
+.customNav .btn:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.customNav .btn-outline-primary:active {
+  background-color: #0f766e !important;
+  color: #ffffff !important;
+}
+
+.customNav .btn-primary:active {
+  background-color: #0d9488 !important;
+  border-color: #0d9488 !important;
+}
+
+.customNav .navbar-toggler {
+  border: none;
+}
+
+.customNav .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.customNav .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.customNav .btn:focus,
+.customNav .btn:active,
+.customNav .btn:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.customNav .btn-outline-primary:active {
+  background-color: #0f766e !important;
+  border-color: #0f766e !important;
+  color: #ffffff !important;
+}

@@ -1,0 +1,347 @@
+
+.home-wrapper {
+  background-color: #f0fdfa;
+}
+
+.hero-section {
+  background: linear-gradient(
+    180deg,
+    #f0fdfa 0%,
+    #ecfeff 100%
+  );
+  padding: 6rem 1rem 7rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #115e59;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-actions .btn {
+  margin: 0 0.5rem;
+}
+
+.hero-actions .btn-primary {
+  background-color: #115e59;
+  border-color: #115e59;
+}
+
+.hero-actions .btn-primary:hover {
+  background-color: #0f766e;
+  border-color: #0f766e;
+}
+
+.hero-actions .btn-outline-light {
+  color: #115e59;
+  border: 1px solid #115e59;
+}
+
+.hero-actions .btn-outline-light:hover {
+  background-color: #115e59;
+  color: #ffffff;
+}
+
+.features-section {
+  background-color: #ffffff;
+  padding: 5rem 1rem;
+}
+
+.feature-card {
+  background-color: #f8fafc;
+  border-radius: 14px;
+  padding: 2.2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+  border-top: 4px solid #0f766e;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card h5 {
+  color: #115e59;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2rem;
+  color: #0f766e;
+
+  background: linear-gradient(135deg, #ecfeff, #f0fdfa);
+  border-radius: 16px;
+
+  box-shadow: 0 8px 18px rgba(15, 118, 110, 0.15);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(135deg, #115e59, #0f766e);
+  color: #ffffff;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 28px rgba(15, 118, 110, 0.25);
+}
+
+.cta-section {
+  background-color: #ecfeff;
+  padding: 4.5rem 1rem;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-weight: 700;
+  color: #115e59;
+  margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.cta-section .btn {
+  background-color: #115e59;
+  border-color: #115e59;
+  color: #ffffff;
+}
+
+.cta-section .btn:hover {
+  background-color: #0f766e;
+  border-color: #0f766e;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.flow-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0f766e;
+  margin-bottom: 10px;
+}
+
+.flow-subtitle {
+  color: #64748b;
+  margin-bottom: 60px;
+}
+
+.flow-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flow-line {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  height: 4px;
+  background: linear-gradient(90deg, #0f766e, #14b8a6, #0f766e);
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.6);
+  z-index: 0;
+}
+
+.flow-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.flow-dot {
+  width: 18px;
+  height: 18px;
+  background: #14b8a6;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  box-shadow: 0 0 0 rgba(20, 184, 166, 0.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(20, 184, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+
+
+.cta-section {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 70px 60px;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.cta-container h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.cta-container p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: white;
+  color: #0f766e;
+  font-weight: 600;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: #ecfdf5;
+}
+
+
+.cta-section {
+  position: relative;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  padding: 140px 20px 120px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: rgba(20, 184, 166, 0.35);
+  filter: blur(140px);
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cta-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 80px 70px;
+  max-width: 760px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.35);
+  animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-container h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 14px;
+}
+
+.cta-container p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  margin-bottom: 36px;
+}
+
+.cta-btn {
+  background: white;
+  color: #0f766e;
+  padding: 16px 48px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.cta-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: #ecfdf5;
+}
+
+.cta-section::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: #0f766e;
+  border-radius: 50% 50% 0 0;
+}

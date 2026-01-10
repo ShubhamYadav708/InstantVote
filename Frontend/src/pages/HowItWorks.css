@@ -1,0 +1,137 @@
+.how-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6f7f3, #f0fffb);
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.how-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #0f766e;
+  margin-bottom: 10px;
+}
+
+.how-sub {
+  color: #0d9488;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.how-card {
+  background: white;
+  padding: 32px 26px;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(15, 118, 110, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 0;
+}
+
+.how-card:hover::after {
+  opacity: 0.07;
+}
+
+.how-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(15, 118, 110, 0.2);
+}
+
+.how-card * {
+  position: relative;
+  z-index: 2;
+}
+
+.how-icon {
+  font-size: 2.2rem;
+  color: #0f766e;
+  margin-bottom: 18px;
+}
+
+.how-card h3 {
+  color: #0f766e;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.how-card p {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.how-cta {
+  margin-top: 80px;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  padding: 60px 30px;
+  border-radius: 28px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  box-shadow: 0 30px 70px rgba(15, 118, 110, 0.4);
+}
+
+.how-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.how-cta button {
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: #0f766e;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.how-cta button:hover {
+  transform: scale(1.05);
+  background: #f0fdfa;
+}
+
+
+.home-steps {
+  background: linear-gradient(135deg, #ecfdf5, #f0fffb);
+  padding: 80px 0;
+}
+
+.step-pill {
+  background: white;
+  border: 2px solid #0f766e;
+  color: #0f766e;
+  font-weight: 700;
+  padding: 16px 28px;
+  border-radius: 999px;
+  display: inline-block;
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.15);
+  transition: all 0.35s ease;
+  cursor: default;
+}
+
+.step-pill:hover {
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: white;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 18px 45px rgba(15, 118, 110, 0.35);
+}

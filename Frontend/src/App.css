@@ -1,0 +1,16 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #eaf7f4; 
+}
+
+.app-content {
+  flex: 1;
+  background: linear-gradient(180deg, #eaf7f4, #f4fffd);
+}
