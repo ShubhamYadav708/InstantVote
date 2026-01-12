@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="container py-4">
         <div className="row align-items-center">
           <div className="col-md-4 text-center text-md-start mb-3 mb-md-0">
-            <h6 className="footer-brand">InstantVote</h6>
+            <h6 className="footer-brand">InstantPoll</h6>
             <p className="footer-text">
               Real-time polling made simple & fast.
             </p>
@@ -69,7 +69,7 @@ const Footer = () => {
         <hr className="footer-divider" />
 
         <p className="text-center footer-copy">
-          © {new Date().getFullYear()} InstantVote. All rights reserved.
+          © {new Date().getFullYear()} InstantPoll. All rights reserved.
         </p>
       </div>
     </footer>

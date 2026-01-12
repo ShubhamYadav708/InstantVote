@@ -6,6 +6,8 @@ import { FaWindows } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Auth.css";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://instantvote-backend.onrender.com";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,9 +28,10 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8080/api/auth/login", {
+      const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
 
@@ -41,7 +44,7 @@ const Login = () => {
 
       setAuth(data.token);
       navigate("/create", { replace: true });
-    } catch {
+    } catch (err) {
       alert("Something went wrong");
     } finally {
       setLoading(false);
@@ -49,11 +52,11 @@ const Login = () => {
   };
 
   const handleGoogleOAuth = () => {
-    window.location.href = "http://localhost:8080/auth/google";
+    window.location.href = `${BACKEND_URL}/auth/google`;
   };
 
   const handleMicrosoftOAuth = () => {
-    window.location.href = "http://localhost:8080/auth/microsoft";
+    window.location.href = `${BACKEND_URL}/auth/microsoft`;
   };
 
   return (
@@ -114,6 +117,7 @@ const Login = () => {
             Continue with Microsoft
           </button>
         </div>
+
         <p className="text-center mt-3">
           Don’t have an account?{" "}
           <Link to="/signup" className="auth-link">
