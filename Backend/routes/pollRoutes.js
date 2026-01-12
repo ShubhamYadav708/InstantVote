@@ -1,4 +1,5 @@
 const express = require("express");
+const authMiddleware=require("../middleware/authMiddleware");
 const {
   createPoll,
   getPoll,
@@ -7,7 +8,7 @@ const {
 
 const router = express.Router();
 
-router.post("/", createPoll);
+router.post("/",authMiddleware,createPoll);
 
 router.get("/:id", getPoll);
 

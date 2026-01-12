@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FiPlusCircle, FiX, FiAlertCircle } from "react-icons/fi";
 import "./CreatePoll.css";
+import { getAuth } from "../utils/auth";
 
 const CreatePoll = () => {
   const [question, setQuestion] = useState("");
@@ -39,8 +40,10 @@ const CreatePoll = () => {
       setLoading(true);
       const expiresAt = new Date(Date.now() + Number(expiry) * 60000);
 
+
+
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/polls`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/polls`,
         {
           question,
           options: options.map(text => ({ text })),
@@ -48,10 +51,12 @@ const CreatePoll = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
+            Authorization: `Bearer ${getAuth()}`,
+            "Content-Type": "application/json"
           }
         }
       );
+
 
 
       navigate(`/poll/${res.data._id}`);
