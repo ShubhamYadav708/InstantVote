@@ -39,11 +39,20 @@ const CreatePoll = () => {
       setLoading(true);
       const expiresAt = new Date(Date.now() + Number(expiry) * 60000);
 
-      const res = await axios.post("http://localhost:8080/api/polls", {
-        question,
-        options: options.map(text => ({ text })),
-        expiresAt
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/polls`,
+        {
+          question,
+          options: options.map(text => ({ text })),
+          expiresAt
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+
 
       navigate(`/poll/${res.data._id}`);
     } catch {
