@@ -14,7 +14,7 @@ import {
 } from "react-icons/fi";
 import "./Poll.css";
 
-const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_BACKEND_URL;
 
 const Poll = () => {
   const { id } = useParams();
@@ -29,7 +29,6 @@ const Poll = () => {
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
-  // Correct public shareable link
   const pollLink = `${window.location.origin}/poll/${id}`;
   const isCreator = localStorage.getItem(`creator-${id}`) === "true";
 
