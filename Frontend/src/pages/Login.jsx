@@ -6,7 +6,8 @@ import { FaWindows } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./Auth.css";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://instantvote-backend.onrender.com";
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL || "https://instantvote-backend.onrender.com";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  // Redirect if already logged in
   useEffect(() => {
     const token = getAuth();
     if (token) {
@@ -45,12 +47,13 @@ const Login = () => {
       setAuth(data.token);
       navigate("/create", { replace: true });
     } catch (err) {
-      alert("Something went wrong");
+      alert("Server error. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  // 🚀 OAuth redirects
   const handleGoogleOAuth = () => {
     window.location.href = `${BACKEND_URL}/auth/google`;
   };
