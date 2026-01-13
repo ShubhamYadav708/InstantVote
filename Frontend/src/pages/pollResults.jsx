@@ -10,25 +10,33 @@ const PollResults = () => {
   const { id } = useParams();
   const [poll, setPoll] = useState(null);
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/polls/${id}`)
-      .then(res => {
+    axios
+      .get(`${API_URL}/api/polls/${id}`)
+      .then((res) => {
         setPoll(res.data);
         shootConfetti();
+      })
+      .catch((err) => {
+        console.error("Failed to load poll results", err);
       });
-
     socket.emit("joinPoll", id);
     socket.on("resultsUpdated", setPoll);
 
-    return () => socket.off("resultsUpdated");
-  }, [id]);
+    return () => {
+      socket.off("resultsUpdated");
+    };
+  }, [id, API_URL]);
 
   if (!poll) return <div className="text-center mt-5">Loading...</div>;
 
-  const isExpired = poll.isExpired ?? (new Date(poll.expiresAt) < new Date());
+  const isExpired =
+    poll.isExpired ?? new Date(poll.expiresAt) < new Date();
 
   const totalVotes = poll.options.reduce((a, b) => a + b.votes, 0);
-  const maxVotes = Math.max(...poll.options.map(o => o.votes));
+  const maxVotes = Math.max(...poll.options.map((o) => o.votes));
 
   return (
     <div className="results-page">
@@ -42,8 +50,10 @@ const PollResults = () => {
 
         <div className="bar-grid">
           {poll.options.map((opt, i) => {
-            const isWinner = isExpired && opt.votes === maxVotes && maxVotes > 0;
-            const isLeading = !isExpired && opt.votes === maxVotes && maxVotes > 0;
+            const isWinner =
+              isExpired && opt.votes === maxVotes && maxVotes > 0;
+            const isLeading =
+              !isExpired && opt.votes === maxVotes && maxVotes > 0;
 
             return (
               <VerticalBar
