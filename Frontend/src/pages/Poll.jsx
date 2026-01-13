@@ -14,6 +14,8 @@ import {
 } from "react-icons/fi";
 import "./Poll.css";
 
+const API = import.meta.env.VITE_API_URL;
+
 const Poll = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -25,7 +27,9 @@ const Poll = () => {
   const [glow, setGlow] = useState(false);
   const [votedIndex, setVotedIndex] = useState(null);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
 
+  // Correct public shareable link
   const pollLink = `${window.location.origin}/poll/${id}`;
   const isCreator = localStorage.getItem(`creator-${id}`) === "true";
 
@@ -37,12 +41,14 @@ const Poll = () => {
       setVotedIndex(Number(savedVote));
     }
 
-    axios.get(`http://localhost:8080/api/polls/${id}`).then(res => {
-      setPoll(res.data);
-      if (!localStorage.getItem(`creator-${id}`)) {
-        localStorage.setItem(`creator-${id}`, "true");
-      }
-    });
+    axios.get(`${API}/api/polls/${id}`)
+      .then(res => {
+        setPoll(res.data);
+        if (!localStorage.getItem(`creator-${id}`)) {
+          localStorage.setItem(`creator-${id}`, "true");
+        }
+      })
+      .catch(() => setError("Poll not found"));
 
     socket.on("resultsUpdated", setPoll);
 
@@ -69,7 +75,6 @@ const Poll = () => {
 
     const timer = setInterval(() => {
       const diff = new Date(poll.expiresAt) - new Date();
-
       if (diff <= 0) {
         setExpired(true);
         setTimeLeft("Expired");
@@ -98,7 +103,7 @@ const Poll = () => {
     }
 
     try {
-      await axios.post(`http://localhost:8080/api/polls/${id}/vote`, {
+      await axios.post(`${API}/api/polls/${id}/vote`, {
         optionIndex: index
       });
 
@@ -165,8 +170,7 @@ const Poll = () => {
           className="results-btn"
           onClick={() => navigate(`/poll/${id}/results`)}
         >
-          <FiBarChart2 />
-          View Results
+          <FiBarChart2 /> View Results
         </button>
 
         {isCreator && (
@@ -177,18 +181,12 @@ const Poll = () => {
               className="copy-btn"
               onClick={() => {
                 navigator.clipboard.writeText(pollLink);
-                const btn = document.querySelector(".copy-btn");
-                btn.classList.add("copied");
-                btn.innerText = "Copied ✓";
-                setTimeout(() => {
-                  btn.classList.remove("copied");
-                  btn.innerText = "Copy Poll Link";
-                }, 1800);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1500);
               }}
             >
-              Copy Poll Link
+              {copied ? "Copied ✓" : "Copy Poll Link"}
             </button>
-
           </div>
         )}
 
