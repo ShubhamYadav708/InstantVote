@@ -1,10 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../utils/auth";
+import { useEffect, useState } from "react";
+import { getAuth, logout, subscribeAuth } from "../utils/auth";
 import logo from "../assets/voting-box-3.png";
 import "./Navbar.css";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const [token, setToken] = useState(getAuth());
+
+  useEffect(() => {
+    const unsub = subscribeAuth(setToken);
+    return unsub;
+  }, []);
+
+  const isLoggedIn = !!token;
 
   const handleLogout = () => {
     logout();
@@ -39,6 +48,7 @@ const Navbar = ({ isLoggedIn }) => {
                 <Link className="nav-link" to="/create">Create Poll</Link>
               </li>
             )}
+
             {!isLoggedIn && (
               <li className="nav-item">
                 <Link to="/how-it-works" className="nav-link">
