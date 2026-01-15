@@ -4,10 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaWindows } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { useAuth } from "../context/AuthContext";
 import "./Auth.css";
+
+const BACKEND_URL =
+  import.meta.env.VITE_BACKEND_URL || "https://instantvote-backend.onrender.com";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,12 +38,12 @@ const Signup = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth/signup",
+        `${BACKEND_URL}/api/auth/signup`,
         formData
       );
+      login(res.data.token);      
+      navigate("/create");        
 
-      localStorage.setItem("token", res.data.token);
-      navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Signup failed");
     } finally {
@@ -47,11 +52,11 @@ const Signup = () => {
   };
 
   const handleGoogleOAuth = () => {
-    window.location.href = "http://localhost:8080/auth/google";
+    window.location.href = `${BACKEND_URL}/auth/google`;
   };
 
   const handleMicrosoftOAuth = () => {
-    window.location.href = "http://localhost:8080/auth/microsoft";
+    window.location.href = `${BACKEND_URL}/auth/microsoft`;
   };
 
   return (
