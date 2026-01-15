@@ -3,13 +3,13 @@ const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
 const { Strategy: MicrosoftStrategy } = require("passport-microsoft");
 const User = require("../models/user");
 
-
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+
+      callbackURL: "https://instantvote-backend.onrender.com/auth/google/callback"
     },
     async (_, __, profile, done) => {
       try {
@@ -24,7 +24,7 @@ passport.use(
             email,
             provider: "google",
             providerId: profile.id,
-            password: null,
+            password: null
           });
         }
 
@@ -36,20 +36,21 @@ passport.use(
   )
 );
 
-
 passport.use(
   new MicrosoftStrategy(
     {
       clientID: process.env.MICROSOFT_CLIENT_ID,
       clientSecret: process.env.MICROSOFT_CLIENT_SECRET,
-      callbackURL: "/auth/microsoft/callback",
-      tenant: process.env.MICROSOFT_TENANT_ID,
 
+      callbackURL:
+        "https://instantvote-backend.onrender.com/auth/microsoft/callback",
+
+      tenant: process.env.MICROSOFT_TENANT_ID,
       scope: ["user.read"],
       authorizationURL:
         "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
       tokenURL:
-        "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+        "https://login.microsoftonline.com/common/oauth2/v2.0/token"
     },
     async (_, __, profile, done) => {
       try {
@@ -68,7 +69,7 @@ passport.use(
             email,
             provider: "microsoft",
             providerId: profile.id,
-            password: null,
+            password: null
           });
         }
 
