@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAuth, logout, subscribeAuth } from "../utils/auth";
+import { getAuth, logout } from "../utils/auth";
 import logo from "../assets/voting-box-3.png";
 import "./Navbar.css";
 
@@ -9,14 +9,22 @@ const Navbar = () => {
   const [token, setToken] = useState(getAuth());
 
   useEffect(() => {
-    const unsub = subscribeAuth(setToken);
-    return unsub;
+    const syncAuth = () => {
+      setToken(getAuth());
+    };
+    window.addEventListener("authChanged", syncAuth);
+
+    syncAuth();
+
+    return () => {
+      window.removeEventListener("authChanged", syncAuth);
+    };
   }, []);
 
   const isLoggedIn = !!token;
 
   const handleLogout = () => {
-    logout();
+    logout();        
     navigate("/login", { replace: true });
   };
 
@@ -61,8 +69,12 @@ const Navbar = () => {
           <div className="d-flex gap-2">
             {!isLoggedIn ? (
               <>
-                <Link className="btn btn-outline-primary" to="/login">Login</Link>
-                <Link className="btn btn-primary" to="/signup">Sign Up</Link>
+                <Link className="btn btn-outline-primary" to="/login">
+                  Login
+                </Link>
+                <Link className="btn btn-primary" to="/signup">
+                  Sign Up
+                </Link>
               </>
             ) : (
               <button className="btn btn-outline-primary" onClick={handleLogout}>

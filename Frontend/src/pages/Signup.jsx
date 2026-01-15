@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaWindows } from "react-icons/fa";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { useAuth } from "../context/AuthContext";
+import { setAuth } from "../utils/auth";
 import "./Auth.css";
 
 const BACKEND_URL =
@@ -12,7 +12,6 @@ const BACKEND_URL =
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -41,8 +40,9 @@ const Signup = () => {
         `${BACKEND_URL}/api/auth/signup`,
         formData
       );
-      login(res.data.token);      
-      navigate("/create");        
+
+      setAuth(res.data.token);
+      navigate("/create", { replace: true });
 
     } catch (err) {
       setError(err.response?.data?.message || "Signup failed");

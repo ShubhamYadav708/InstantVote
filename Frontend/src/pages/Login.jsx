@@ -17,7 +17,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // Redirect if already logged in
   useEffect(() => {
     const token = getAuth();
     if (token) {
@@ -53,7 +52,6 @@ const Login = () => {
     }
   };
 
-  // 🚀 OAuth redirects
   const handleGoogleOAuth = () => {
     window.location.href = `${BACKEND_URL}/auth/google`;
   };
