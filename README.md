@@ -7,8 +7,8 @@ Built with **MERN stack**, OAuth authentication, and a clean public-share experi
 ---
 
 ##  Live Demo
-🌐 **Frontend:** https://instantvote-frontend.onrender.com  
-🌐 **Backend API:** https://instantvote-backend.onrender.com  
+🌐 **Frontend:** https://instantvote-frontend.vercel.app 
+🌐 **Backend :** https://instantvote-backend.onrender.com  
 
 ---
 
@@ -55,7 +55,7 @@ Built with **MERN stack**, OAuth authentication, and a clean public-share experi
 - JWT
 
 ### Hosting
-- Frontend: Render
+- Frontend: Vercel
 - Backend: Render
 - Database: MongoDB Atlas
 
