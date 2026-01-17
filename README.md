@@ -7,8 +7,7 @@ Built with **MERN stack**, OAuth authentication, and a clean public-share experi
 ---
 
 ##  Live Demo
-🌐 **Frontend:** https://instantvote-frontend.vercel.app 
-🌐 **Backend :** https://instantvote-backend.onrender.com  
+🌐 **Website link:** https://instantvote-frontend.vercel.app 
 
 ---
 
